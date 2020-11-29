@@ -18,6 +18,7 @@ export class AppComponent {
     //this.buttonClicks.push(this.buttonClicks.length + 1);
     this.buttonClicks.push(new Date());
     //Date() is a built-in JS method that generates a timestamp
+    //requires us to change the color and style using the index of each array item
   }
 
   // getColor() {
