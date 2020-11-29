@@ -5,6 +5,8 @@
       <!-- <li>Add A button which says 'Display Details'</li> -->
       <br>
       <button class='btn btn-primary' (click)='onButtonClick()'>Display Details</button>
+      <!--alternative to including toggling in onButtonClick() is to set (click)='detailsVisible = !detailsVisible';
+      if the button needs to do additional things, it is better to include the toggle functionality in the method, too-->
       <br>
       <br>
       <!-- <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li> -->
@@ -18,9 +20,24 @@
       <!-- <li>Toggle the displaying of that paragraph with the button created in the first step</li> -->
       
       <!-- <li>Log all button clicks in an array and output that array below the secret paragraph (maybe log a timestamp or simply an incrementing number)</li> -->
-      <ol>
-        <li *ngFor='let instance of buttonClicks'></li>
-      </ol>
+      <!-- <ol>
+        <li 
+        *ngFor='let instance of buttonClicks' 
+        [ngStyle]='{backgroundColor: getColor()}'
+        >
+        {{ instance }}
+        </li>
+      </ol> -->
+      <!--I used [ngStyle] to call a method because that is what the lectures earlier in this section showed;
+      an better alternative from the solutions lecture uses a conditional within the ngStyle statement;
+      this applies the background color only to particular instances, while calling the method changes the background
+      of all of the instances once the number of instances rises above 4-->
+      <div 
+        *ngFor='let instance of buttonClicks; let i = index' 
+        [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}"
+        [ngClass]="{'five-and-greater': i >= 4}"
+        >{{ instance }}
+      </div>
       
       <!-- <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li> -->
     
